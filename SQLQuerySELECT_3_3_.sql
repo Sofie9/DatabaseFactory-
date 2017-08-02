@@ -1,0 +1,9 @@
+SELECT
+MAX(t.NTOV) NTOV,
+SUM(s.KOL*(1-(2*(d.PR-1)))) as Ost,
+round(SUM(s.CENA*(s.KOL*(1-(2*(d.PR-1))))),2) as SUMMA
+FROM DMS s
+INNER JOIN TOV t on t.KTOV=s.KTOV
+INNER JOIN DMZ d on d.NDM=s.NDM
+GROUP BY t.KTOV
+ORDER BY NTOV

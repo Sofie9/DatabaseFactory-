@@ -1,0 +1,11 @@
+select MAX(TOV.NTOV) NTOV, SUM(DMS.KOL) as SUMKOL,
+round(SUM(DMS.CENA*DMS.KOL),2)
+as SUMA
+from TOV,DMZ,DMS
+where DMZ.PR=2 
+and DMZ.DDM=('2014-03-01')
+and TOV.KTOV=DMS.KTOV
+and DMZ.NDM=DMS.NDM
+group by TOV.KTOV
+order by SUMA DESC;
+
